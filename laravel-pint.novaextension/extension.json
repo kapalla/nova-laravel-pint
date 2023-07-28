@@ -25,5 +25,47 @@
         "shortcut": "option-shift-f"
       }
     ]
-  }
+  },
+
+  "config": [
+    {
+      "key": "laravel-pint.format-on-save.section",
+      "title": "Format on save",
+      "description": "Can be overridden in project settings.",
+      "type": "section",
+      "children": [
+        {
+          "key": "laravel-pint.format-on-save",
+          "title": "Format documents when saved",
+          "description": "Can be overridden in project settings.",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "laravel-pint.preset",
+          "title": "Preset",
+          "description": "Can be overridden in project settings.",
+          "type": "enum",
+          "values": ["auto", "laravel"],
+          "default": "auto"
+        }
+      ]
+    }
+  ],
+  "config-workspace": [
+    {
+      "key": "laravel-pint.format-on-save.section",
+      "title": "Format on save",
+      "type": "section",
+      "children": [
+        {
+          "key": "laravel-pint.format-on-save",
+          "title": "Format documents when saved",
+          "type": "enum",
+          "values": ["Global Default", "Enable", "Disable"],
+          "default": "Global Default"
+        }
+      ]
+    }
+  ]
 }
