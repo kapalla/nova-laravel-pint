@@ -20,52 +20,47 @@
   "commands": {
     "editor": [
       {
-        "title": "Format with Laravel Pint",
-        "command": "kapalla.pint.format",
-        "shortcut": "option-shift-f"
+        "title": "Format",
+        "command": "kapalla.pint.format"
+      },
+      {
+        "title": "Save Without Formatting",
+        "command": "kapalla.pint.save-without-formatting"
       }
     ]
   },
 
   "config": [
     {
-      "key": "laravel-pint.format-on-save.section",
+      "key": "laravel-pint.format-on-save",
       "title": "Format on save",
       "description": "Can be overridden in project settings.",
-      "type": "section",
-      "children": [
-        {
-          "key": "laravel-pint.format-on-save",
-          "title": "Format documents when saved",
-          "description": "Can be overridden in project settings.",
-          "type": "boolean",
-          "default": true
-        },
-        {
-          "key": "laravel-pint.preset",
-          "title": "Preset",
-          "description": "Can be overridden in project settings.",
-          "type": "enum",
-          "values": ["auto", "laravel"],
-          "default": "auto"
-        }
-      ]
+      "type": "boolean",
+      "default": true
+    },
+    {
+      "key": "laravel-pint.preset",
+      "title": "Preset",
+      "description": "Can be overridden in project settings.",
+      "type": "enum",
+      "values": ["auto", "laravel"],
+      "default": "auto"
     }
   ],
   "config-workspace": [
     {
-      "key": "laravel-pint.format-on-save.section",
+      "key": "laravel-pint.format-on-save",
       "title": "Format on save",
-      "type": "section",
-      "children": [
-        {
-          "key": "laravel-pint.format-on-save",
-          "title": "Format documents when saved",
-          "type": "enum",
-          "values": ["Global Default", "Enable", "Disable"],
-          "default": "Global Default"
-        }
-      ]
+      "type": "enum",
+      "values": ["Global Default", "Enable", "Disable"],
+      "default": "Global Default"
+    },
+    {
+      "key": "laravel-pint.preset",
+      "title": "Preset",
+      "type": "enum",
+      "values": ["Global Default", "auto", "laravel"],
+      "default": "Global Default"
     }
   ]
 }
