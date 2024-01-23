@@ -1,7 +1,7 @@
 {
   "name": "nova-laravel-pint",
-  "version": "1.0.0",
-  "description": "Integrates Laravel Pint into your Nova projects for automatic code formatting",
+  "version": "0.1.0",
+  "description": "Run Laravel Pint in your Nova projects for automatic code formatting",
   "type": "module",
   "scripts": {
     "build": "rollup -c"

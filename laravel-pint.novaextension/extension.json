@@ -2,7 +2,7 @@
   "identifier": "kapalla.pint",
   "name": "Laravel Pint",
   "organization": "Kai Kapalla",
-  "description": "Integrates Laravel Pint into your Nova projects for automatic code formatting",
+  "description": "Run Laravel Pint in your Nova projects for automatic code formatting",
   "version": "1.0",
   "repository": "https://github.com/kapalla/nova-laravel-pint",
   "bugs": "https://github.com/kapalla/nova-laravel-pint/issues",
@@ -20,47 +20,9 @@
   "commands": {
     "editor": [
       {
-        "title": "Format",
-        "command": "kapalla.pint.format"
-      },
-      {
         "title": "Save Without Formatting",
         "command": "kapalla.pint.save-without-formatting"
       }
     ]
-  },
-
-  "config": [
-    {
-      "key": "laravel-pint.format-on-save",
-      "title": "Format on save",
-      "description": "Can be overridden in project settings.",
-      "type": "boolean",
-      "default": true
-    },
-    {
-      "key": "laravel-pint.preset",
-      "title": "Preset",
-      "description": "Can be overridden in project settings.",
-      "type": "enum",
-      "values": ["auto", "laravel"],
-      "default": "auto"
-    }
-  ],
-  "config-workspace": [
-    {
-      "key": "laravel-pint.format-on-save",
-      "title": "Format on save",
-      "type": "enum",
-      "values": ["Global Default", "Enable", "Disable"],
-      "default": "Global Default"
-    },
-    {
-      "key": "laravel-pint.preset",
-      "title": "Preset",
-      "type": "enum",
-      "values": ["Global Default", "auto", "laravel"],
-      "default": "Global Default"
-    }
-  ]
+  }
 }
