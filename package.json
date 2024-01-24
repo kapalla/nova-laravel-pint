@@ -1,6 +1,6 @@
 {
   "name": "nova-laravel-pint",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Run Laravel Pint in your Nova projects for automatic code formatting",
   "type": "module",
   "scripts": {
@@ -17,8 +17,8 @@
   },
   "homepage": "https://github.com/kapalla/nova-laravel-pint#readme",
   "devDependencies": {
-    "prettier": "^3.0.0",
-    "@rollup/plugin-commonjs": "^25.0.3",
-    "rollup": "^3.26.3"
+    "prettier": "^3.2.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "rollup": "^4.9.6"
   }
 }

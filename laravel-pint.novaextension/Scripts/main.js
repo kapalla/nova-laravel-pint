@@ -4,31 +4,37 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var main = {};
 
+let enabled = nova.workspace.config.get("laravel-pint.enable");
+let formatOnSave = resolveFormatOnSaveConfig();
+let configPath = resolveConfigPath();
+
 const ignoredEditors = new Set();
 
 async function format(editor) {
-  if (ignoredEditors.has(editor)) {
+  if (!enabled || !formatOnSave || ignoredEditors.has(editor)) {
     return;
   }
 
+  const configPathArgs = configPath ? ["--config", configPath] : [];
   const process = new Process(
     nova.path.join(nova.workspace.path, "vendor/bin/pint"),
     {
-      args: ["--preset", "laravel", editor.document.path],
+      args: [...configPathArgs, editor.document.path],
     }
   );
 
-  process.start();
   process.onDidExit(() => {
     const file = nova.fs.open(editor.document.path);
+
     editor.edit((textEdit) => {
       textEdit.delete(new Range(0, editor.document.length));
       textEdit.insert(0, file.read());
     }).then(() => {
-      ignoredEditors.add(editor);
-      editor.save().finally(() => ignoredEditors.delete(editor));
+      saveWithoutFormatting(editor);
     });
   });
+
+  process.start();
 }
 
 function saveWithoutFormatting(editor) {
@@ -36,7 +42,32 @@ function saveWithoutFormatting(editor) {
   editor.save().finally(() => ignoredEditors.delete(editor));
 }
 
+function resolveFormatOnSaveConfig() {
+  if (nova.workspace.config.get("laravel-pint.format-on-save") == "Global Default") {
+    return nova.config.get("laravel-pint.format-on-save");
+  }
+
+  return nova.workspace.config.get("laravel-pint.format-on-save") == "Enable" ? true : false;
+}
+
+function resolveConfigPath() {
+  const path = nova.workspace.config.get("laravel-pint.config-path") || nova.config.get("laravel-pint.config-path") || null;
+
+  if (path && !nova.fs.access(path, nova.fs.F_OK)) {
+    return null;
+  }
+
+  return path;
+}
+
 var activate = main.activate = function () {
+  nova.workspace.config.onDidChange("laravel-pint.format-on-save", () => formatOnSave = resolveFormatOnSaveConfig());
+  nova.config.onDidChange("laravel-pint.format-on-save", () => formatOnSave = resolveFormatOnSaveConfig());
+
+  nova.workspace.config.onDidChange("laravel-pint.config-path", () => configPath = resolveConfigPath());
+  nova.config.onDidChange("laravel-pint.config-path", () => configPath = resolveConfigPath());
+
+  nova.workspace.config.onDidChange("laravel-pint.enable", (newValue) => enabled = newValue);
   nova.workspace.activeTextEditor.onDidSave(format);
 };
 

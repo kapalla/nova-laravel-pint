@@ -24,5 +24,43 @@
         "command": "kapalla.pint.save-without-formatting"
       }
     ]
-  }
+  },
+
+  "config": [
+    {
+      "key": "laravel-pint.format-on-save",
+      "title": "Format on save",
+      "description": "Can be overridden in project settings.",
+      "type": "boolean",
+      "default": true
+    },
+    {
+      "key": "laravel-pint.config-path",
+      "title": "Custom config path",
+      "description": "Leave it blank to use pint.json in your project root. Can be overridden in project settings.",
+      "type": "path",
+    }
+  ],
+
+  "config-workspace": [
+    {
+      "key": "laravel-pint.enable",
+      "title": "Enable Laravel Pint in this project",
+      "type": "boolean",
+      "default": true
+    },
+    {
+      "key": "laravel-pint.format-on-save",
+      "title": "Format on save",
+      "type": "enum",
+      "values": ["Global Default", "Enable", "Disable"],
+      "default": "Global Default"
+    },
+    {
+      "key": "laravel-pint.config-path",
+      "title": "Custom config path",
+      "description": "Leave it blank to use pint.json in your project root.",
+      "type": "path",
+    }
+  ]
 }
