@@ -17,8 +17,6 @@ async function format(editor) {
     return;
   }
 
-  console.log("not abort");
-
   const configPathArgs = configPath ? ["--config", configPath] : [];
   const process = new Process(
     nova.path.join(nova.workspace.path, "vendor/bin/pint"),
