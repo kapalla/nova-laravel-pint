@@ -5,9 +5,13 @@ let configPath = resolveConfigPath();
 const ignoredEditors = new Set();
 
 async function format(editor) {
-  if (!enabled || !formatOnSave || ignoredEditors.has(editor)) {
+  const pintPath = nova.path.join(nova.workspace.path, "vendor/bin/pint");
+
+  if (!nova.fs.access(pintPath, nova.fs.X_OK) || !enabled || !formatOnSave || ignoredEditors.has(editor)) {
     return;
   }
+
+  console.log("not abort");
 
   const configPathArgs = configPath ? ["--config", configPath] : [];
   const process = new Process(
@@ -47,7 +51,7 @@ function resolveFormatOnSaveConfig() {
 function resolveConfigPath() {
   const path = nova.workspace.config.get("laravel-pint.config-path") || nova.config.get("laravel-pint.config-path") || null;
 
-  if (path && !nova.fs.access(path, nova.fs.F_OK)) {
+  if (path && !nova.fs.access(path, nova.fs.R_OK)) {
     return null;
   }
 
