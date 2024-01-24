@@ -38,7 +38,7 @@
       "key": "laravel-pint.config-path",
       "title": "Custom config path",
       "description": "Can be overridden in project settings.",
-      "type": "path",
+      "type": "path"
     }
   ],
 
@@ -59,7 +59,7 @@
     {
       "key": "laravel-pint.config-path",
       "title": "Custom config path",
-      "type": "path",
+      "type": "path"
     }
   ]
 }
