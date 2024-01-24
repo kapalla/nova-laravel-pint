@@ -37,7 +37,7 @@
     {
       "key": "laravel-pint.config-path",
       "title": "Custom config path",
-      "description": "Leave it blank to use pint.json in your project root. Can be overridden in project settings.",
+      "description": "Can be overridden in project settings.",
       "type": "path",
     }
   ],
@@ -59,7 +59,6 @@
     {
       "key": "laravel-pint.config-path",
       "title": "Custom config path",
-      "description": "Leave it blank to use pint.json in your project root.",
       "type": "path",
     }
   ]
