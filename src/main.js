@@ -16,24 +16,35 @@ async function format(editor) {
     return;
   }
 
+  const tmpPath = nova.path.join(nova.fs.tempdir, nova.crypto.randomUUID());
+  let tmpFile = nova.fs.open(tmpPath, "xw");
+  const position = editor.selectedRange.end ?? 0;
+
+  tmpFile.write(editor.getTextInRange(new Range(0, editor.document.length)));
+  tmpFile.close();
+
   const configPathArgs = configPath ? ["--config", configPath] : [];
   const process = new Process(
     nova.path.join(nova.workspace.path, "vendor/bin/pint"),
     {
-      args: [...configPathArgs, editor.document.path],
+      args: [...configPathArgs, tmpPath],
     }
   );
 
-  process.onDidExit(() => {
-    const file = nova.fs.open(editor.document.path);
+  process.onDidExit((code) => {
+    tmpFile = nova.fs.open(tmpPath, "r");
+
+    const formattedContent = tmpFile.read();
 
     editor
       .edit((textEdit) => {
         textEdit.delete(new Range(0, editor.document.length));
-        textEdit.insert(0, file.read());
+        textEdit.insert(0, formattedContent);
       })
       .then(() => {
-        saveWithoutFormatting(editor);
+        editor.selectedRange = new Range(position, position);
+        tmpFile.close();
+        nova.fs.remove(tmpPath);
       });
   });
 
@@ -95,7 +106,7 @@ exports.activate = function () {
   );
   nova.workspace.onDidAddTextEditor((editor) => {
     if (editor.document.syntax === "php") {
-      editor.onDidSave(format);
+      editor.onWillSave(format);
     }
   });
 };
