@@ -51,6 +51,7 @@ async function format(editor) {
         editor.selectedRange = new Range(position, position);
         tmpFile.close();
         nova.fs.remove(tmpPath);
+        saveWithoutFormatting(editor);
       });
   });
 

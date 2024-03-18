@@ -3,7 +3,7 @@
   "name": "Laravel Pint",
   "organization": "Kai Kapalla",
   "description": "Run Laravel Pint in your Nova projects for automatic code formatting",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "repository": "https://github.com/kapalla/nova-laravel-pint",
   "bugs": "https://github.com/kapalla/nova-laravel-pint/issues",
   "categories": ["formatters"],
