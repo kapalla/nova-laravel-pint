@@ -1,3 +1,7 @@
+## Version 1.0.4
+
+- Fix keeping the scroll position after formatting
+
 ## Version 1.0.3
 
 - Fixes a bug that prevented the document from being saved in v.1.0.2

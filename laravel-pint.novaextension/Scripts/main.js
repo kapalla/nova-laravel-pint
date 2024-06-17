@@ -49,6 +49,7 @@ async function format(editor) {
       })
       .then(() => {
         editor.selectedRange = new Range(position, position);
+        editor.scrollToPosition(position);
         tmpFile.close();
         nova.fs.remove(tmpPath);
         saveWithoutFormatting(editor);
