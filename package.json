@@ -1,6 +1,6 @@
 {
   "name": "nova-laravel-pint",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Run Laravel Pint in your Nova projects for automatic code formatting",
   "type": "module",
   "scripts": {

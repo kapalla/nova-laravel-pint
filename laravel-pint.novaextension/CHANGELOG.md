@@ -1,3 +1,7 @@
+## Version 1.0.5
+
+- Fixes a bug where pint.json was ignored
+
 ## Version 1.0.4
 
 - Fix keeping the scroll position after formatting

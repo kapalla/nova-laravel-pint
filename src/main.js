@@ -28,6 +28,7 @@ async function format(editor) {
     nova.path.join(nova.workspace.path, "vendor/bin/pint"),
     {
       args: [...configPathArgs, tmpPath],
+      cwd: nova.workspace.path,
     }
   );
 
